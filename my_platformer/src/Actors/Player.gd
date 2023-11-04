@@ -69,7 +69,7 @@ func _physics_process(_delta):
 	)
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		print("Collided with: ", collision.collider.name)
+		#print("Collided with: ", collision.collider.name)
 		if (collision.collider.name == "Enemy"):
 			get_tree().change_scene("res://src/DeathMessage/DeathMessage.tscn")
 

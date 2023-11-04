@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=8]
 [ext_resource path="res://src/Level/Music.gd" type="Script" id=9]
 [ext_resource path="res://src/FallOffWorld/FallOffWorld.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/art/door/sign_browndoor.png" type="Texture" id=11]
+[ext_resource path="res://src/Level/Door.gd" type="Script" id=12]
+[ext_resource path="res://assets/art/door/enter-png-enter-icon-1600.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "move"
@@ -27,6 +30,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 800, 450 ), Vector2( 800, 225 ) ]
 }
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25, 32.5 )
 
 [node name="Level" type="Node2D"]
 pause_mode = 1
@@ -114,9 +120,33 @@ position = Vector2( 612, 458 )
 position = Vector2( 505, 689 )
 scale = Vector2( 512, 1 )
 
+[node name="Door" type="Node" parent="."]
+
+[node name="Door" type="Area2D" parent="Door"]
+collision_layer = 32
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Door"]
+position = Vector2( 566, 194 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Door/Door/CollisionShape2D"]
+position = Vector2( 0, 1 )
+scale = Vector2( 0.0769463, 0.0483049 )
+texture = ExtResource( 11 )
+
+[node name="ReturnPrompt" type="Sprite" parent="Door/Door"]
+position = Vector2( 566, 134 )
+scale = Vector2( 0.015, 0.01875 )
+texture = ExtResource( 13 )
+
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 script = ExtResource( 9 )
+
+[connection signal="body_entered" from="Door/Door" to="Door/Door" method="_on_Door_body_entered"]
+[connection signal="body_exited" from="Door/Door" to="Door/Door" method="_on_Door_body_exited"]
