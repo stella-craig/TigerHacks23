@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://falloffworld/falloffworld.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
@@ -165,7 +166,7 @@ position = Vector2( 481.55, 174 )
 physics_material_override = SubResource( 10 )
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 878, 1584 )
+position = Vector2( 814, 1640 )
 physics_material_override = SubResource( 11 )
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource( 7 )]
@@ -194,9 +195,17 @@ autoplay = true
 position = Vector2( 1537, 1289 )
 
 [node name="Grayscale" type="ColorRect" parent="."]
+visible = false
 material = SubResource( 14 )
 margin_left = -113152.0
 margin_top = -26718.0
 margin_right = 131385.0
 margin_bottom = 39160.0
 script = ExtResource( 10 )
+
+[node name="fall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1259, 2029 )
+scale = Vector2( 150, 1 )
+
+[connection signal="body_entered" from="Enemies/Enemy10" to="Coins/Coin11" method="_on_Enemy10_body_entered"]
+[connection signal="body_entered" from="Enemies/Enemy10" to="Enemies/Enemy10" method="_on_Enemy10_body_entered"]
