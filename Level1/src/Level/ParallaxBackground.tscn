@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/art/background/Level1.png" type="Texture" id=7]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_base_scale = Vector2( 0.4, 0 )
+
+[node name="Background" type="ParallaxLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Background"]
+position = Vector2( 455, 224 )
+texture = ExtResource( 7 )
