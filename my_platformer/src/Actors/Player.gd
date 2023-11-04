@@ -13,7 +13,6 @@ onready var platform_detector = $PlatformDetector
 onready var animation_player = $AnimationPlayer
 onready var shoot_timer = $ShootAnimation
 onready var sprite = $Sprite
-onready var sound_jump = $Jump
 onready var gun = sprite.get_node(@"Gun")
 
 
@@ -52,8 +51,6 @@ func _ready():
 #   you can easily move individual functions.
 func _physics_process(_delta):
 	# Play jump sound
-	if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
-		sound_jump.play()
 
 	var direction = get_direction()
 
