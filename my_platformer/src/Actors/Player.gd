@@ -71,7 +71,7 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		print("Collided with: ", collision.collider.name)
 		if (collision.collider.name == "Enemy"):
-			get_tree().quit()
+			get_tree().change_scene("res://src/MainMenu/MainMenu.tscn")
 
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
 	# This will make Robi face left or right depending on the direction you move.
