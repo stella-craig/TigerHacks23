@@ -47,6 +47,9 @@ var shoot_time = 1e20
 var Bullet = preload("res://player/Bullet.tscn")
 var Enemy = preload("res://enemy/Enemy.tscn")
 
+#special collectible!!!!!!!
+var collectible = 0
+
 onready var sound_jump = $SoundJump
 onready var sound_shoot = $SoundShoot
 onready var sprite = $Sprite
@@ -229,3 +232,8 @@ func _spawn_enemy_above():
 	var e = Enemy.instance()
 	e.position = position + 50 * Vector2.UP
 	get_parent().add_child(e)
+
+
+#collect the collectible(s)!!!!!!!!!!
+func GetSpecialCollectible():
+	collectible += 1

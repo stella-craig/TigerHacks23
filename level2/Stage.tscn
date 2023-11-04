@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://audio/music.ogg" type="AudioStream" id=9]
+[ext_resource path="res://FallOffWorld.gd" type="Script" id=10]
+[ext_resource path="res://Collectibles/Ruby Slippers.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Sign.tscn" type="PackedScene" id=12]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -202,10 +205,13 @@ motion = Vector2( 225, 0 )
 cycle = 10.0
 
 [node name="Seesaw" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 1201.4, 424.76 )
+position = Vector2( 959, 361 )
 
 [node name="OneWayPlatform" parent="Props" instance=ExtResource( 5 )]
 position = Vector2( 423, 351 )
+
+[node name="Sign" parent="Props" instance=ExtResource( 12 )]
+position = Vector2( 305, 1905 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 204, 1848 )
@@ -273,3 +279,17 @@ autowrap = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 autoplay = true
+
+[node name="FallOffWorld" type="Node" parent="."]
+
+[node name="Fallen" type="Node2D" parent="FallOffWorld"]
+
+[node name="FallOffWorld" type="Area2D" parent="FallOffWorld/Fallen"]
+script = ExtResource( 10 )
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Ruby Slippers" parent="Collectibles" instance=ExtResource( 11 )]
+position = Vector2( 1569, 1290 )
+
+[connection signal="body_entered" from="FallOffWorld/Fallen/FallOffWorld" to="Coins/Coin" method="_on_FallOffWorld_body_entered"]
