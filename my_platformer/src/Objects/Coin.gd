@@ -14,4 +14,5 @@ onready var animation_player = $AnimationPlayer
 # Click the AnimationPlayer node to see the animation timeline.
 func _on_body_entered(_body):
 	animation_player.play("picked")
+	# warning-ignore:unsafe_property_access
 	CoinsCounter.coins_collected += 1

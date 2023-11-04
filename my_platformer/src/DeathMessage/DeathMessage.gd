@@ -12,11 +12,14 @@ func _ready():
 
 
 func _on_RestartButton_button_down():
+# warning-ignore:unsafe_property_access
 	CoinsCounter.coins_collected = 0
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/Main/Game.tscn")
 
 
 func _on_MainMenuButton_button_down():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/MainMenu/MainMenu.tscn")
 
 
