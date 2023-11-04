@@ -68,7 +68,7 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		#print("Collided with: ", collision.collider.name)
 		if (collision.collider.name == "Enemy"):
-# warning-ignore:return_value_discarded
+		# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://src/DeathMessage/DeathMessage.tscn")
 
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.

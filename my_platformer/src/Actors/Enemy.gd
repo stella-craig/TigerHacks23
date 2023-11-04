@@ -49,7 +49,13 @@ func _physics_process(_delta):
 
 	# We only update the y value of _velocity as we want to handle the horizontal movement ourselves.
 	_velocity.y = move_and_slide(_velocity, FLOOR_NORMAL).y
-
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		#print("Collided with: ", collision.collider.name)
+		if (collision.collider.name == "Player"):
+# warning-ignore:return_value_discarded
+			get_tree().change_scene("res://src/DeathMessage/DeathMessage.tscn")
+			
 	# We flip the Sprite depending on which way the enemy is moving.
 	if _velocity.x > 0:
 		sprite.scale.x = 1

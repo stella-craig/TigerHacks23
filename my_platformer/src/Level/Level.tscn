@@ -8,9 +8,9 @@
 [ext_resource path="res://assets/art/door/preview.jpg" type="Texture" id=6]
 [ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/art/sign/tilemap.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/door/enter-png-enter-key-icon-1600.png" type="Texture" id=9]
 [ext_resource path="res://src/FallOffWorld/FallOffWorld.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Level/Door.gd" type="Script" id=12]
-[ext_resource path="res://assets/art/door/enter-png-enter-icon-1600.png" type="Texture" id=13]
 [ext_resource path="res://src/Level/JumpSign.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=1]
@@ -100,7 +100,7 @@ position = Vector2( -13, 6 )
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource( 3 )]
-position = Vector2( 800, 335.621 )
+position = Vector2( 800, 450 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform"]
 autoplay = "move"
@@ -137,9 +137,9 @@ z_index = -1
 texture = ExtResource( 6 )
 
 [node name="ReturnPrompt" type="Sprite" parent="Door/Door"]
-position = Vector2( 566, 134 )
-scale = Vector2( 0.015, 0.01875 )
-texture = ExtResource( 13 )
+position = Vector2( 569, 142 )
+scale = Vector2( 0.02125, 0.01875 )
+texture = ExtResource( 9 )
 
 [node name="Signs" type="Node" parent="."]
 
@@ -204,10 +204,10 @@ z_index = 1
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
 material = SubResource( 5 )
-margin_left = -502.0
-margin_top = -262.0
-margin_right = 1433.0
-margin_bottom = 848.0
+margin_left = -536.0
+margin_top = -283.0
+margin_right = 1399.0
+margin_bottom = 827.0
 rect_scale = Vector2( 1.00095, 0.994508 )
 
 [node name="TileMap2" type="TileMap" parent="."]
