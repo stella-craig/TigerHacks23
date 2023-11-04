@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enter-png-enter-key-icon-1600.png-e3c1a17442de28ca1a95464e81b2c0cb.stex"
+path="res://.import/Start Game.png-68888d9e179c685dc6dff06242a750fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/door/enter-png-enter-key-icon-1600.png"
-dest_files=[ "res://.import/enter-png-enter-key-icon-1600.png-e3c1a17442de28ca1a95464e81b2c0cb.stex" ]
+source_file="res://assets/art/menu/Start Game.png"
+dest_files=[ "res://.import/Start Game.png-68888d9e179c685dc6dff06242a750fb.stex" ]
 
 [params]
 
