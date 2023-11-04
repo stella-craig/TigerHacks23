@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
@@ -9,9 +9,8 @@
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://audio/music.ogg" type="AudioStream" id=9]
-[ext_resource path="res://FallOffWorld.gd" type="Script" id=10]
+[ext_resource path="res://Grayscale.gd" type="Script" id=10]
 [ext_resource path="res://Collectibles/Ruby Slippers.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/Sign.tscn" type="PackedScene" id=12]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -47,6 +46,36 @@ friction = 0.0
 [sub_resource type="PhysicsMaterial" id=12]
 friction = 0.0
 
+[sub_resource type="Shader" id=13]
+code = "shader_type canvas_item;
+
+uniform float time_passed; // This should be set from the outside, e.g., using Godot's shader parameters
+
+const float buffer_time = 5.0; // Time before the fade starts in seconds
+const float fade_duration = 15.0; // Duration of the fade in seconds
+
+void fragment() {
+    COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+    // Convert to grayscale
+    float gray = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
+    COLOR.rgb = vec3(gray);
+
+    // Calculate the alpha based on time passed
+    if (time_passed < buffer_time) {
+        // No fading before the buffer time
+        COLOR.a = 1.0;
+    } else {
+        // Start fading out after the buffer time
+        float fade_amount = (time_passed - buffer_time) / fade_duration;
+        COLOR.a *= 1.0 - clamp(fade_amount, 0.0, 1.0);
+    }
+}
+"
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+shader_param/time_passed = null
+
 [node name="Stage" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -55,97 +84,31 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 4
 format = 1
-tile_data = PoolIntArray( -1048544, 14, 0, -1048543, 14, 0, -1048542, 14, 0, -917475, 14, 0, -917474, 14, 0, -917468, 14, 0, -917467, 14, 0, -786405, 14, 0, -786404, 14, 0, -786394, 14, 0, -786393, 14, 0, -655331, 14, 0, -655330, 14, 0, -655324, 14, 0, -655323, 14, 0, -524257, 14, 0, -524256, 14, 0, -524254, 14, 0, -524253, 14, 0, -393187, 14, 0, -393186, 14, 0, -262113, 14, 0, -262112, 14, 0, -196580, 14, 0, -196579, 14, 0, -196574, 14, 0, -196573, 14, 0, -196570, 14, 0, -196569, 14, 0, -196566, 14, 0, -196565, 14, 0, -131047, 14, 0, -131046, 14, 0, -131027, 14, 0, -131026, 14, 0, -65536, 11, 0, -65505, 14, 0, -65504, 14, 0, -65488, 14, 0, -65487, 14, 0, 0, 11, 0, 27, 536870926, 0, 28, 15, 0, 65536, 11, 0, 65570, 14, 0, 65571, 14, 0, 65574, 14, 0, 65575, 14, 0, 65578, 14, 0, 65579, 14, 0, 131072, 11, 0, 131097, 536870926, 0, 131098, 15, 0, 196608, 11, 0, 262144, 11, 0, 262171, 536870926, 0, 262172, 15, 0, 327680, 11, 0, 393216, 11, 0, 393241, 536870926, 0, 393242, 15, 0, 458752, 11, 0, 524288, 11, 0, 524311, 536870926, 0, 524312, 15, 0, 589824, 11, 0, 655360, 11, 0, 655386, 536870913, 0, 655387, 536870926, 0, 655388, 1, 0, 720896, 2, 0, 786432, 2, 0, 786455, 536870913, 0, 786456, 1, 0, 786462, 536870913, 0, 786463, 1, 0, 851968, 2, 0, 917504, 2, 0, 917524, 536870913, 0, 917525, 1, 0, 917532, 536870913, 0, 917533, 1, 0, 983040, 2, 0, 1048576, 2, 0, 1048593, 536870913, 0, 1048594, 1, 0, 1048602, 536870913, 0, 1048603, 1, 0, 1114112, 4, 0, 1114113, 0, 0, 1114114, 6, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 12, 0, 1179648, 10, 0, 1179649, 10, 0, 1179650, 10, 0, 1179651, 10, 0, 1179652, 10, 0, 1179653, 10, 0, 1179654, 10, 0, 1179655, 10, 0, 1179656, 10, 0, 1179657, 10, 0, 1179658, 10, 0, 1179659, 10, 0, 1179660, 10, 0, 1179661, 10, 0, 1179663, 1, 0, 1179672, 536870913, 0, 1179673, 536870912, 0, 1179674, 1, 0, 1245184, 10, 0, 1245185, 10, 0, 1245186, 10, 0, 1245187, 10, 0, 1245188, 10, 0, 1245189, 10, 0, 1245190, 2, 0, 1310720, 10, 0, 1310721, 10, 0, 1310722, 10, 0, 1310723, 10, 0, 1310724, 10, 0, 1310725, 10, 0, 1310726, 2, 0, 1376256, 10, 0, 1376257, 10, 0, 1376258, 10, 0, 1376259, 10, 0, 1376260, 10, 0, 1376261, 10, 0, 1376262, 4, 0, 1441792, 10, 0, 1441793, 10, 0, 1441794, 10, 0, 1441795, 10, 0, 1441796, 10, 0, 1441797, 10, 0, 1441798, 10, 0, 1507328, 10, 0, 1507329, 10, 0, 1507330, 10, 0, 1507331, 10, 0, 1507332, 10, 0, 1507333, 10, 0, 1507334, 10, 0, 1572864, 10, 0, 1572865, 10, 0, 1572866, 10, 0, 1572867, 10, 0, 1572868, 10, 0, 1572869, 10, 0, 1572870, 10, 0, 1638400, 10, 0, 1638401, 10, 0, 1638402, 10, 0, 1638403, 10, 0, 1638404, 10, 0, 1638405, 10, 0, 1638406, 10, 0 )
+tile_data = PoolIntArray( -1048544, 21, 0, -1048543, 21, 0, -1048542, 21, 0, -917475, 21, 0, -917474, 21, 0, -917468, 21, 0, -917467, 21, 0, -786405, 21, 0, -786404, 21, 0, -786394, 21, 0, -786393, 21, 0, -655331, 21, 0, -655330, 21, 0, -655324, 21, 0, -655323, 21, 0, -524257, 21, 0, -524256, 21, 0, -524254, 21, 0, -524253, 21, 0, -393187, 21, 0, -393186, 21, 0, -262113, 21, 0, -262112, 21, 0, -196580, 21, 0, -196579, 21, 0, -196574, 21, 0, -196573, 21, 0, -196571, 21, 0, -196570, 21, 0, -196567, 21, 0, -196566, 21, 0, -131047, 21, 0, -131046, 21, 0, -131028, 21, 0, -131027, 21, 0, -65505, 21, 0, -65504, 21, 0, -65489, 21, 0, -65488, 21, 0, 0, 21, 0, 27, 21, 0, 28, 21, 0, 65536, 21, 0, 65570, 21, 0, 65571, 21, 0, 65573, 21, 0, 65574, 21, 0, 131072, 21, 0, 131097, 21, 0, 131098, 21, 0, 131112, 21, 0, 131113, 21, 0, 196608, 21, 0, 262144, 21, 0, 262171, 21, 0, 262172, 21, 0, 327680, 21, 0, 393216, 21, 0, 393241, 21, 0, 393242, 21, 0, 458752, 21, 0, 524288, 21, 0, 524311, 21, 0, 524312, 21, 0, 589824, 21, 0, 655360, 21, 0, 655386, 21, 0, 655387, 21, 0, 655388, 21, 0, 720896, 21, 0, 786432, 21, 0, 786455, 21, 0, 786456, 21, 0, 786462, 21, 0, 786463, 21, 0, 851968, 21, 0, 917504, 21, 0, 917524, 21, 0, 917525, 21, 0, 917532, 21, 0, 917533, 21, 0, 983040, 21, 0, 1048576, 21, 0, 1048593, 21, 0, 1048594, 21, 0, 1048602, 21, 0, 1048603, 21, 0, 1114112, 16, 0, 1114113, 16, 0, 1114114, 16, 0, 1114115, 16, 0, 1114116, 16, 0, 1114117, 16, 0, 1114118, 16, 0, 1114119, 16, 0, 1114120, 16, 0, 1114121, 16, 0, 1114122, 16, 0, 1114123, 16, 0, 1114124, 16, 0, 1114125, 16, 0, 1114126, 16, 0, 1179648, 20, 0, 1179649, 20, 0, 1179650, 20, 0, 1179651, 20, 0, 1179652, 20, 0, 1179653, 20, 0, 1179654, 20, 0, 1179655, 20, 0, 1179656, 20, 0, 1179657, 20, 0, 1179658, 20, 0, 1179659, 20, 0, 1179660, 20, 0, 1179661, 20, 0, 1179662, 20, 0, 1179663, 21, 0, 1179672, 21, 0, 1179673, 21, 0, 1179674, 21, 0 )
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2( 119, -86 )
 
-[node name="Coin" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 298, 379 )
-
-[node name="Coin2" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 288, 350 )
-
-[node name="Coin3" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 311, 353 )
-
-[node name="Coin4" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 249, 309 )
-
-[node name="Coin5" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 214, 325 )
-
-[node name="Coin6" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 289, 330 )
-
-[node name="Coin7" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 399, 324 )
-
-[node name="Coin8" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 342, 345 )
-
-[node name="Coin9" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 375, 1784 )
-
-[node name="Coin10" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 407, 1784 )
-
 [node name="Coin11" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 457, 1915 )
+position = Vector2( 700, 1984 )
 
 [node name="Coin12" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 701, 1978 )
-
-[node name="Coin13" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1040, 336 )
-
-[node name="Coin14" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1072, 336 )
+position = Vector2( 459, 1921 )
 
 [node name="Coin15" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 777, 1018 )
-
-[node name="Coin16" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1134, 1016 )
+position = Vector2( 874, 1792 )
 
 [node name="Coin17" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 993, 1143 )
+position = Vector2( 773, 1016 )
 
 [node name="Coin18" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 872, 1786 )
+position = Vector2( 713, 1462 )
 
 [node name="Coin19" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 999, 1437 )
+position = Vector2( 649, 1663 )
 
 [node name="Coin20" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 716, 1596 )
-
-[node name="Coin21" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 49.4434, 244.258 )
-
-[node name="Coin22" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 44.7994, 240.609 )
-
-[node name="Coin23" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 54.0875, 240.609 )
-
-[node name="Coin24" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 58.068, 234.969 )
-
-[node name="Coin25" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 58.7315, 228.999 )
-
-[node name="Coin26" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 53.092, 224.686 )
-
-[node name="Coin27" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 49.1117, 229.331 )
-
-[node name="Coin28" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 44.136, 224.355 )
-
-[node name="Coin29" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 39.8238, 228.667 )
+position = Vector2( 1000, 1442 )
 
 [node name="Coin30" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 41.4823, 234.306 )
@@ -209,9 +172,6 @@ position = Vector2( 959, 361 )
 
 [node name="OneWayPlatform" parent="Props" instance=ExtResource( 5 )]
 position = Vector2( 423, 351 )
-
-[node name="Sign" parent="Props" instance=ExtResource( 12 )]
-position = Vector2( 305, 1905 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 204, 1848 )
@@ -280,16 +240,15 @@ autowrap = true
 stream = ExtResource( 9 )
 autoplay = true
 
-[node name="FallOffWorld" type="Node" parent="."]
-
-[node name="Fallen" type="Node2D" parent="FallOffWorld"]
-
-[node name="FallOffWorld" type="Area2D" parent="FallOffWorld/Fallen"]
-script = ExtResource( 10 )
-
 [node name="Collectibles" type="Node" parent="."]
 
 [node name="Ruby Slippers" parent="Collectibles" instance=ExtResource( 11 )]
-position = Vector2( 1569, 1290 )
+position = Vector2( 1537, 1289 )
 
-[connection signal="body_entered" from="FallOffWorld/Fallen/FallOffWorld" to="Coins/Coin" method="_on_FallOffWorld_body_entered"]
+[node name="Grayscale" type="ColorRect" parent="."]
+material = SubResource( 14 )
+margin_left = -113152.0
+margin_top = -26718.0
+margin_right = 131385.0
+margin_bottom = 39160.0
+script = ExtResource( 10 )
