@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/MainMenu/StartButton.gd" type="Script" id=2]
+[ext_resource path="res://src/MainMenu/QuitButton.gd" type="Script" id=3]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -14,4 +15,15 @@ margin_bottom = 274.0
 text = "Start"
 script = ExtResource( 2 )
 
+[node name="QuitButton" type="Button" parent="."]
+anchor_right = 0.134
+anchor_bottom = 0.327
+margin_left = 292.0
+margin_top = 339.0
+margin_right = 361.8
+margin_bottom = 238.04
+text = "Quit"
+script = ExtResource( 3 )
+
 [connection signal="button_down" from="StartButton" to="." method="_on_StartButton_button_down"]
+[connection signal="button_down" from="QuitButton" to="." method="_on_QuitButton_button_down"]

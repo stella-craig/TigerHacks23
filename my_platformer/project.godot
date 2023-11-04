@@ -62,6 +62,10 @@ run/main_scene="res://src/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 target_fps="60"
 
+[autoload]
+
+CoinsCounter="*res://src/UserInterface/CoinsCounter.gd"
+
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
