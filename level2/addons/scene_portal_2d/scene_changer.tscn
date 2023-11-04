@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/scene_portal_2d/scene_changer.gd" type="Script" id=1]
+[ext_resource path="res://addons/scene_portal_2d/transitions/fader_ctrl.tscn" type="PackedScene" id=2]
+
+[node name="SceneChanger" type="CanvasLayer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "This is a global object.
+It should be added to your project settings -> Autoload.
+"
+}
+
+[node name="DefaultTransition" parent="." instance=ExtResource( 2 )]

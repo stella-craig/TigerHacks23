@@ -1,0 +1,141 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/scene_portal_2d/example/base_room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/scene_portal_2d/example/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/scene_portal_2d/example/player_hook.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/scene_portal_2d/example/Stone.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 112 )
+
+[node name="Yellow Room" type="Node2D"]
+
+[node name="Base Room" parent="." instance=ExtResource( 1 )]
+
+[node name="Polygon2D" parent="Base Room" index="0"]
+color = Color( 0.501961, 0.494118, 0.431373, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base Room/Walls" index="4"]
+position = Vector2( 80, 96 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Base Room/Walls" index="5"]
+margin_left = 72.0
+margin_right = 82.0
+margin_bottom = 185.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Door Icon2" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 32, 32 )
+
+[node name="ScenePortal" parent="YSort/Door Icon2" index="0"]
+use_default_transition = true
+type = 2
+portal_id = 3
+target = 0
+
+[node name="Door Icon3" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 288, 160 )
+
+[node name="ScenePortal" parent="YSort/Door Icon3" index="0"]
+position = Vector2( 6.10352e-05, 3.05176e-05 )
+use_default_transition = true
+type = 1
+portal_id = 2
+target = 3
+
+[node name="Door Icon" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 152, 160 )
+
+[node name="ScenePortal" parent="YSort/Door Icon" index="0"]
+position = Vector2( -1.09139e-11, 1.09139e-11 )
+use_default_transition = true
+type = 2
+area_mode = false
+target = 0
+teleport = true
+
+[node name="Stone" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 104, 128 )
+scale = Vector2( 0.625, 0.625 )
+
+[node name="Stone2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 144, 104 )
+scale = Vector2( 0.625, 0.625 )
+
+[node name="Stone3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 184, 104 )
+scale = Vector2( 0.625, 0.625 )
+
+[node name="Stone4" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 216, 136 )
+scale = Vector2( 0.625, 0.625 )
+
+[node name="PlayerHook" parent="YSort" instance=ExtResource( 3 )]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 146.316
+margin_top = 128.463
+margin_right = 186.316
+margin_bottom = 142.463
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 240.0
+margin_top = 1.90735e-06
+margin_right = 443.0
+margin_bottom = 65.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "This room will intentionally be
+reset each time you enter;
+Yet, the player is correctly sent 
+to the entry portal each time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Control"]
+margin_left = 16.0
+margin_right = 136.0
+margin_bottom = 31.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Intra-scene exit
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Control"]
+margin_left = 264.0
+margin_top = 128.0
+margin_right = 384.0
+margin_bottom = 159.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Intra-scene enter
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="Base Room"]
+
+[editable path="YSort/Door Icon2"]
+
+[editable path="YSort/Door Icon3"]
+
+[editable path="YSort/Door Icon"]
