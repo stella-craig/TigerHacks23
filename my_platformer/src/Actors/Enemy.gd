@@ -76,3 +76,5 @@ func get_new_animation():
 	else:
 		animation_new = "destroy"
 	return animation_new
+
+

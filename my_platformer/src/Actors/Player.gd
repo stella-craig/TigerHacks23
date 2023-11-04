@@ -67,6 +67,11 @@ func _physics_process(_delta):
 	_velocity = move_and_slide_with_snap(
 		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
 	)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		print("Collided with: ", collision.collider.name)
+		if (collision.collider.name == "Enemy"):
+			get_tree().quit()
 
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
 	# This will make Robi face left or right depending on the direction you move.
@@ -133,3 +138,5 @@ func get_new_animation(is_shooting = false):
 		animation_new += "_weapon"
 	return animation_new
 	
+	
+
