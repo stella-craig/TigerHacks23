@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
@@ -47,6 +47,20 @@ friction = 0.0
 [sub_resource type="PhysicsMaterial" id=12]
 friction = 0.0
 
+[sub_resource type="Shader" id=13]
+code = "shader_type canvas_item;
+
+//uniform vec3 tint;
+
+void fragment() {
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+	COLOR.rgb = vec3(COLOR.r + COLOR.g + COLOR.b) / 3.0;
+	//COLOR.rgb = COLOR.rgb / 2.0 + tint.rgb / 2.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+
 [node name="Stage" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -83,12 +97,6 @@ position = Vector2( 399, 324 )
 
 [node name="Coin8" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 342, 345 )
-
-[node name="Coin9" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 375, 1784 )
-
-[node name="Coin10" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 407, 1784 )
 
 [node name="Coin11" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 457, 1915 )
@@ -291,5 +299,12 @@ script = ExtResource( 10 )
 
 [node name="Ruby Slippers" parent="Collectibles" instance=ExtResource( 11 )]
 position = Vector2( 1569, 1290 )
+
+[node name="greyscale shader" type="ColorRect" parent="."]
+material = SubResource( 14 )
+margin_left = -53.0
+margin_top = -283.0
+margin_right = 1924.0
+margin_bottom = 2329.0
 
 [connection signal="body_entered" from="FallOffWorld/Fallen/FallOffWorld" to="Coins/Coin" method="_on_FallOffWorld_body_entered"]

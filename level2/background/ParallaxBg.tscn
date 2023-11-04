@@ -5,21 +5,24 @@
 [ext_resource path="res://background/scroll_bg_cloud_2.png" type="Texture" id=3]
 [ext_resource path="res://background/scroll_bg_cloud_3.png" type="Texture" id=4]
 [ext_resource path="res://background/scroll_bg_fg_2.png" type="Texture" id=5]
-[ext_resource path="res://background/scroll_bg_fg_1.png" type="Texture" id=6]
+[ext_resource path="res://background/oz background.jpg" type="Texture" id=6]
 
 [node name="ParallaxBg" type="ParallaxBackground"]
 scroll_base_scale = Vector2( 0.7, 0 )
 
 [node name="Sky" type="ParallaxLayer" parent="."]
+visible = false
 motion_mirroring = Vector2( 400, 0 )
 
 [node name="Sprite" type="Sprite" parent="Sky"]
+position = Vector2( 90, 1 )
 scale = Vector2( 1000, 0.94 )
 texture = ExtResource( 1 )
 centered = false
 offset = Vector2( -15, 0 )
 
 [node name="Clouds" type="ParallaxLayer" parent="."]
+visible = false
 motion_scale = Vector2( 0.1, 1 )
 motion_mirroring = Vector2( 400, 0 )
 
@@ -54,21 +57,28 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="Mount2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.2, 1 )
-motion_mirroring = Vector2( 400, 0 )
 
 [node name="Sprite" type="Sprite" parent="Mount2"]
+visible = false
 position = Vector2( 0, 113 )
 texture = ExtResource( 5 )
 centered = false
 region_rect = Rect2( 0, 0, 400, 128 )
 
+[node name="Sprite2" type="Sprite" parent="Mount2"]
+position = Vector2( 745.836, 189.5 )
+scale = Vector2( 2.29335, 1.63056 )
+texture = ExtResource( 6 )
+
 [node name="Mount1" type="ParallaxLayer" parent="."]
+visible = false
 motion_scale = Vector2( 0.4, 1 )
 motion_mirroring = Vector2( 400, 0 )
 
 [node name="Sprite" type="Sprite" parent="Mount1"]
-position = Vector2( 0, 113 )
+visible = false
+position = Vector2( 1, 2 )
+scale = Vector2( 0.62675, 1 )
 texture = ExtResource( 6 )
 centered = false
 region_rect = Rect2( 0, 0, 400, 128 )
