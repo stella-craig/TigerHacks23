@@ -48,8 +48,8 @@ code = "shader_type canvas_item;
 
 uniform float time_passed; // This should be set from the outside, e.g., using Godot's shader parameters
 
-const float buffer_time = 5.0; // Time before the fade starts in seconds
-const float fade_duration = 15.0; // Duration of the fade in seconds
+const float buffer_time = 10.0; // Time before the fade starts in seconds
+const float fade_duration = 20.0; // Duration of the fade in seconds
 
 void fragment() {
     COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
@@ -194,7 +194,6 @@ autoplay = true
 position = Vector2( 1537, 1289 )
 
 [node name="Grayscale" type="ColorRect" parent="."]
-visible = false
 material = SubResource( 14 )
 margin_left = -113152.0
 margin_top = -26718.0
