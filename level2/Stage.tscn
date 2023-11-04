@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://audio/music.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Grayscale.gd" type="Script" id=10]
 [ext_resource path="res://Collectibles/Ruby Slippers.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Sign.tscn" type="PackedScene" id=12]
 
@@ -49,16 +50,32 @@ friction = 0.0
 [sub_resource type="Shader" id=13]
 code = "shader_type canvas_item;
 
-//uniform vec3 tint;
+uniform float time_passed; // This should be set from the outside, e.g., using Godot's shader parameters
+
+const float buffer_time = 5.0; // Time before the fade starts in seconds
+const float fade_duration = 15.0; // Duration of the fade in seconds
 
 void fragment() {
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
-	COLOR.rgb = vec3(COLOR.r + COLOR.g + COLOR.b) / 3.0;
-	//COLOR.rgb = COLOR.rgb / 2.0 + tint.rgb / 2.0;
-}"
+    COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+    // Convert to grayscale
+    float gray = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
+    COLOR.rgb = vec3(gray);
+
+    // Calculate the alpha based on time passed
+    if (time_passed < buffer_time) {
+        // No fading before the buffer time
+        COLOR.a = 1.0;
+    } else {
+        // Start fading out after the buffer time
+        float fade_amount = (time_passed - buffer_time) / fade_duration;
+        COLOR.a *= 1.0 - clamp(fade_amount, 0.0, 1.0);
+    }
+}
+"
 
 [sub_resource type="ShaderMaterial" id=14]
 shader = SubResource( 13 )
+shader_param/time_passed = null
 
 [node name="Stage" type="Node2D"]
 
@@ -67,9 +84,8 @@ position = Vector2( 1, 1331 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 4
-show_collision = true
 format = 1
-tile_data = PoolIntArray( -1048544, 16, 0, -1048543, 16, 0, -1048542, 16, 0, -917475, 16, 0, -917474, 16, 0, -917468, 16, 0, -917467, 16, 0, -786405, 16, 0, -786404, 16, 0, -786394, 16, 0, -786393, 16, 0, -655331, 16, 0, -655330, 16, 0, -655324, 16, 0, -655323, 16, 0, -524257, 16, 0, -524256, 16, 0, -524254, 16, 0, -524253, 16, 0, -393187, 16, 0, -393186, 16, 0, -262113, 16, 0, -262112, 16, 0, -196580, 16, 0, -196579, 16, 0, -196574, 16, 0, -196573, 16, 0, -196571, 16, 0, -196570, 16, 0, -196567, 16, 0, -196566, 16, 0, -131047, 16, 0, -131046, 16, 0, -131028, 16, 0, -131027, 16, 0, -65505, 16, 0, -65504, 16, 0, -65489, 16, 0, -65488, 16, 0, 27, 16, 0, 28, 16, 0, 65570, 16, 0, 65571, 16, 0, 65573, 16, 0, 65574, 16, 0, 131097, 16, 0, 131098, 16, 0, 131112, 16, 0, 131113, 16, 0, 262171, 16, 0, 262172, 16, 0, 393241, 16, 0, 393242, 16, 0, 524311, 16, 0, 524312, 16, 0, 655386, 16, 0, 655387, 16, 0, 655388, 16, 0, 786455, 16, 0, 786456, 16, 0, 786462, 16, 0, 786463, 16, 0, 917524, 16, 0, 917525, 16, 0, 917532, 16, 0, 917533, 16, 0, 1048593, 16, 0, 1048594, 16, 0, 1048602, 16, 0, 1048603, 16, 0, 1114112, 16, 0, 1114113, 16, 0, 1114114, 16, 0, 1114115, 16, 0, 1114116, 16, 0, 1114117, 16, 0, 1114118, 16, 0, 1114119, 16, 0, 1114120, 16, 0, 1114121, 16, 0, 1114122, 16, 0, 1114123, 16, 0, 1114124, 16, 0, 1114125, 16, 0, 1114126, 12, 0, 1179663, 16, 0, 1179672, 16, 0, 1179673, 16, 0, 1179674, 16, 0 )
+tile_data = PoolIntArray( -1048544, 16, 0, -1048543, 16, 0, -1048542, 16, 0, -917475, 16, 0, -917474, 16, 0, -917468, 16, 0, -917467, 16, 0, -786405, 16, 0, -786404, 16, 0, -786394, 16, 0, -786393, 16, 0, -655331, 16, 0, -655330, 16, 0, -655324, 16, 0, -655323, 16, 0, -524257, 16, 0, -524256, 16, 0, -524254, 16, 0, -524253, 16, 0, -393187, 16, 0, -393186, 16, 0, -262113, 16, 0, -262112, 16, 0, -196580, 16, 0, -196579, 16, 0, -196574, 16, 0, -196573, 16, 0, -196571, 16, 0, -196570, 16, 0, -196567, 16, 0, -196566, 16, 0, -131047, 16, 0, -131046, 16, 0, -131028, 16, 0, -131027, 16, 0, -65505, 16, 0, -65504, 16, 0, -65489, 16, 0, -65488, 16, 0, 27, 16, 0, 28, 16, 0, 65570, 16, 0, 65571, 16, 0, 65573, 16, 0, 65574, 16, 0, 131097, 16, 0, 131098, 16, 0, 131112, 16, 0, 131113, 16, 0, 262171, 16, 0, 262172, 16, 0, 393241, 16, 0, 393242, 16, 0, 524311, 16, 0, 524312, 16, 0, 655386, 16, 0, 655387, 16, 0, 655388, 16, 0, 786455, 16, 0, 786456, 16, 0, 786462, 16, 0, 786463, 16, 0, 917524, 16, 0, 917525, 16, 0, 917532, 16, 0, 917533, 16, 0, 1048593, 16, 0, 1048594, 16, 0, 1048602, 16, 0, 1048603, 16, 0, 1114112, 16, 0, 1114113, 16, 0, 1114114, 16, 0, 1114115, 16, 0, 1114116, 16, 0, 1114117, 16, 0, 1114118, 16, 0, 1114119, 16, 0, 1114120, 16, 0, 1114121, 16, 0, 1114122, 16, 0, 1114123, 16, 0, 1114124, 16, 0, 1114125, 16, 0, 1114126, 12, 0, 1179648, 20, 0, 1179649, 20, 0, 1179650, 20, 0, 1179651, 20, 0, 1179652, 20, 0, 1179653, 20, 0, 1179654, 20, 0, 1179655, 20, 0, 1179656, 20, 0, 1179657, 20, 0, 1179658, 20, 0, 1179659, 20, 0, 1179660, 20, 0, 1179661, 20, 0, 1179663, 16, 0, 1179672, 16, 0, 1179673, 16, 0, 1179674, 16, 0 )
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2( 119, -86 )
@@ -299,3 +315,4 @@ margin_left = -113152.0
 margin_top = -26718.0
 margin_right = 131385.0
 margin_bottom = 39160.0
+script = ExtResource( 10 )
