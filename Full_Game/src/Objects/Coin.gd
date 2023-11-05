@@ -16,3 +16,9 @@ func _on_body_entered(_body):
 	animation_player.play("picked")
 	# warning-ignore:unsafe_property_access
 	CoinsCounter.coins_collected += 1
+	if CoinsCounter.first_level == true:
+		CoinsCounter.level1_coins += 1
+	elif CoinsCounter.second_level == true:
+		CoinsCounter.level2_coins += 1
+	elif CoinsCounter.third_level == true:
+		CoinsCounter.level3_coins += 1
