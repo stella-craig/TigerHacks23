@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://src/Level4/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Platforms/Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=4]
@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=8]
 [ext_resource path="res://src/Level/Music.gd" type="Script" id=9]
 [ext_resource path="res://src/FallOffWorld/FallOffWorld.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/art/door/sign_browndoor.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/door/preview.jpg" type="Texture" id=11]
 [ext_resource path="res://src/Level/Door.gd" type="Script" id=12]
 [ext_resource path="res://assets/art/door/enter-png-enter-icon-1600.png" type="Texture" id=13]
 
@@ -146,6 +146,3 @@ texture = ExtResource( 13 )
 stream = ExtResource( 8 )
 autoplay = true
 script = ExtResource( 9 )
-
-[connection signal="body_entered" from="Door/Door" to="Door/Door" method="_on_Door_body_entered"]
-[connection signal="body_exited" from="Door/Door" to="Door/Door" method="_on_Door_body_exited"]
