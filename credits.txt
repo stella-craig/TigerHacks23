@@ -1,0 +1,28 @@
+Assets:
+
+Main Menu:
+	Curtains background: https://pngtree.com/freebackground/3d-render-of-movie-theater-curtains-on-stage-or-floor-template_8836066.html
+
+Level 1:
+	City background: https://therake.com/stories/an-ode-to-new-york-city
+	Tileset: https://kenney.nl/assets
+
+General:
+	Popcorn pickups: https://knowledgebound.net/products/tcr5287?variant=43767977738487
+	End of level door: https://sonerhoca.net/wp-content/uploads/2020/11/3.-sinif-4-2.pdf
+	
+Death Screen:
+	The End? background: https://m.imdb.com/title/tt0080745/mediaviewer/rm1022829825/
+
+
+
+
+
+Audio:
+	Level 2 music: https://music.youtube.com/watch?v=EQLuYNpYX8E&list=PLFhB40nM1iSq4aECrew0gugWweNZ7uql2 
+	Coin/Popcorn Pickup: https://pixabay.com/sound-effects/search/eating/?theme=film+%26+special+effects&duration=0-30
+	Explode: https://pixabay.com/sound-effects/search/hit/
+	Jump: https://pixabay.com/sound-effects/search/crunch/
+	Shoot: https://pixabay.com/sound-effects/search/gun/
+	Level 3 music: https://www.youtube.com/watch?v=QHAY3FPNCGU&ab_channel=ConceptuallyYours
+

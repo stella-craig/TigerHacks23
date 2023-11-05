@@ -250,7 +250,7 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/PlatformerBody2D/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/health_bar_2d/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/PlatformerBody2D/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg" )
 
 [gdnative]
 

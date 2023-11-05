@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Level/Continue.gd" type="Script" id=2]
+[ext_resource path="res://src/Buttons/Quit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Buttons/MainMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Level/Label5.gd" type="Script" id=5]
+[ext_resource path="res://assets/art/menu/capboard cut.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/end_level/fin.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/art/menu/back to main menu.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/menu/next level.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/menu/grey clapboard.png" type="Texture" id=10]
+
+[node name="Completed1" type="CanvasLayer"]
+
+[node name="fin background" type="Sprite" parent="."]
+position = Vector2( 400, 240 )
+scale = Vector2( 0.8, 0.685714 )
+texture = ExtResource( 7 )
+
+[node name="CoinsCounter" parent="." instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = 204.0
+margin_right = 786.0
+margin_bottom = 249.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 183.0
+margin_top = 36.0
+margin_right = 638.0
+margin_bottom = 84.0
+text = "You finished the Silent Era!
+This was an era of film before cameras could record sound.
+This era is best known for the brilliant performances by Charlie Chaplin."
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 533.0
+margin_top = 223.0
+margin_right = 687.0
+margin_bottom = 237.0
+text = "Total Popcorn Obtained:"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 741.0
+margin_top = 264.0
+margin_right = 781.0
+margin_bottom = 278.0
+text = "/ 8"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 529.0
+margin_top = 264.0
+margin_right = 714.0
+margin_bottom = 278.0
+text = "Popcorn Obtained this Level:"
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 730.0
+margin_top = 263.0
+margin_right = 770.0
+margin_bottom = 277.0
+script = ExtResource( 5 )
+
+[node name="MainMenu" parent="." instance=ExtResource( 4 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 352.0
+margin_top = 321.0
+margin_right = 455.0
+margin_bottom = 424.0
+
+[node name="Quit" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 612.0
+margin_top = 309.0
+margin_right = 713.0
+margin_bottom = 421.0
+
+[node name="Continue" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 104.0
+margin_top = 336.0
+margin_right = 198.0
+margin_bottom = 431.0
+text = "Continue"
+script = ExtResource( 2 )
+
+[node name="exit" type="Sprite" parent="."]
+visible = false
+position = Vector2( 683, 374 )
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 6 )
+
+[node name="main menu" type="Sprite" parent="."]
+position = Vector2( 403, 373 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+
+[node name="continue" type="Sprite" parent="."]
+
+[node name="cut" type="Sprite" parent="."]
+position = Vector2( 662, 366 )
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 150, 384 )
+scale = Vector2( 0.304, 0.304 )
+texture = ExtResource( 9 )
+
+[connection signal="button_down" from="Continue" to="Continue" method="_on_Continue_button_down"]

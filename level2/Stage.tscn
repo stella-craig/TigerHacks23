@@ -1,10 +1,8 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://platform/MovingPlatform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://background/Seesaw.tscn" type="PackedScene" id=4]
-[ext_resource path="res://platform/OneWayPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://falloffworld/falloffworld.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
@@ -51,8 +49,8 @@ code = "shader_type canvas_item;
 
 uniform float time_passed; // This should be set from the outside, e.g., using Godot's shader parameters
 
-const float buffer_time = 5.0; // Time before the fade starts in seconds
-const float fade_duration = 15.0; // Duration of the fade in seconds
+const float buffer_time = 10.0; // Time before the fade starts in seconds
+const float fade_duration = 20.0; // Duration of the fade in seconds
 
 void fragment() {
     COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
@@ -91,87 +89,38 @@ position = Vector2( 119, -86 )
 
 [node name="Coin11" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 700, 1984 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Coin12" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 459, 1921 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Coin15" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 874, 1792 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Coin17" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 773, 1016 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Coin18" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 713, 1462 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Coin19" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 649, 1663 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Coin20" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 1000, 1442 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Coin30" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 41.4823, 234.306 )
-
-[node name="Coin31" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 840, 243 )
-
-[node name="Coin32" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 872, 243 )
-
-[node name="Coin33" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 904, 243 )
-
-[node name="Coin34" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 904, 211 )
-
-[node name="Coin35" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 872, 211 )
-
-[node name="Coin36" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 840, 211 )
-
-[node name="Coin37" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1247.67, 312.885 )
-
-[node name="Coin38" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1279.67, 312.885 )
-
-[node name="Coin39" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1311.67, 312.885 )
-
-[node name="Coin40" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1311.67, 280.885 )
-
-[node name="Coin41" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1279.67, 280.885 )
-
-[node name="Coin42" parent="Coins" instance=ExtResource( 2 )]
-position = Vector2( 1247.67, 280.885 )
+position = Vector2( 1002, 1150 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Props" type="Node2D" parent="."]
 position = Vector2( 72, -36 )
-
-[node name="MovingPlatform" parent="Props" instance=ExtResource( 3 )]
-position = Vector2( 137, 203 )
-motion = Vector2( 0, 70 )
-cycle = 5.0
-
-[node name="MovingPlatform 2" parent="Props" instance=ExtResource( 3 )]
-position = Vector2( 312.412, 272.772 )
-motion = Vector2( 150, 0 )
-cycle = 10.0
-
-[node name="MovingPlatform 3" parent="Props" instance=ExtResource( 3 )]
-position = Vector2( 337, 420 )
-motion = Vector2( 225, 0 )
-cycle = 10.0
-
-[node name="Seesaw" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 959, 361 )
-
-[node name="OneWayPlatform" parent="Props" instance=ExtResource( 5 )]
-position = Vector2( 423, 351 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 204, 1848 )
@@ -217,7 +166,7 @@ position = Vector2( 481.55, 174 )
 physics_material_override = SubResource( 10 )
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 878, 1584 )
+position = Vector2( 814, 1640 )
 physics_material_override = SubResource( 11 )
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource( 7 )]
@@ -252,3 +201,10 @@ margin_top = -26718.0
 margin_right = 131385.0
 margin_bottom = 39160.0
 script = ExtResource( 10 )
+
+[node name="fall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1259, 2029 )
+scale = Vector2( 150, 1 )
+
+[connection signal="body_entered" from="Enemies/Enemy10" to="Coins/Coin11" method="_on_Enemy10_body_entered"]
+[connection signal="body_entered" from="Enemies/Enemy10" to="Enemies/Enemy10" method="_on_Enemy10_body_entered"]
