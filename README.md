@@ -4,6 +4,7 @@ Welcome to Reel Life, a Windows video game! You play as a time traveler, but whe
 Work your way through each stage to reach the modern day once again.
 The enemies are different forms of media, but as a result of our time-traveling disaster, most of the enemies are in the wrong era!
 Throughout each level, you can collect popcorn (instead of coins)! Can you collect them all?
+Be careful though, the game is permadeath! All levels have been tested and are possible.
 
 Note: This was a project for the TigerHacks 2023 Hackathon.
 
