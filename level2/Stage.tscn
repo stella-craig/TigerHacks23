@@ -195,7 +195,6 @@ autoplay = true
 position = Vector2( 1537, 1289 )
 
 [node name="Grayscale" type="ColorRect" parent="."]
-visible = false
 material = SubResource( 14 )
 margin_left = -113152.0
 margin_top = -26718.0
