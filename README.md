@@ -27,3 +27,12 @@ The Blockbuster Era was in the 1970s and was a major advancement in the populari
 
 This project was created by Maya Bowman, Ahhyun Lee, Patrick Gardner, and Stella Craig (the best team at TigerHacks of course).
 
+## How to Play
+
+Download the Reel Life .exe and .pck files. Open the exe file and you should be transported into the game!
+
+Movement: WASD or arrow keys
+
+Shoot: Space bar or left-click
+
+Interact button: Enter key or space bar
