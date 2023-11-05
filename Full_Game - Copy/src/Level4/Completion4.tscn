@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Buttons/MainMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Buttons/Quit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Level4/Label4.gd" type="Script" id=4]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="MainMenu" parent="." instance=ExtResource( 2 )]
+margin_left = 335.0
+margin_top = 257.0
+margin_right = 418.0
+margin_bottom = 277.0
+
+[node name="Quit" parent="." instance=ExtResource( 3 )]
+margin_left = 344.0
+margin_top = 339.0
+margin_right = 398.0
+margin_bottom = 360.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 278.0
+margin_top = 48.0
+margin_right = 460.0
+margin_bottom = 62.0
+text = "You've completed the demo!"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 239.0
+margin_top = 167.0
+margin_right = 441.0
+margin_bottom = 181.0
+text = "Popcorn Obtained on this level:"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 277.0
+margin_top = 103.0
+margin_right = 317.0
+margin_bottom = 117.0
+text = "Total Popcorn Obtained:"
+
+[node name="CoinsCounter" parent="." instance=ExtResource( 1 )]
+margin_left = 454.0
+margin_top = 83.0
+margin_right = 554.0
+margin_bottom = 128.0
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 479.0
+margin_top = 166.0
+margin_right = 519.0
+margin_bottom = 180.0
+script = ExtResource( 4 )

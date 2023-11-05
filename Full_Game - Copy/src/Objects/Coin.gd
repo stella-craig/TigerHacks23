@@ -28,3 +28,5 @@ func _on_body_entered(_body):
 	elif CoinsCounter.third_level == true:
 # warning-ignore:unsafe_property_access
 		CoinsCounter.level3_coins += 1
+	elif CoinsCounter.fourth_level == true:
+		CoinsCounter.level4_coins += 1

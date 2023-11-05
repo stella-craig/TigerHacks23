@@ -11,7 +11,7 @@
 [ext_resource path="res://src/Level/Music.gd" type="Script" id=9]
 [ext_resource path="res://src/FallOffWorld/FallOffWorld.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/art/door/preview.jpg" type="Texture" id=11]
-[ext_resource path="res://src/Level/Door.gd" type="Script" id=12]
+[ext_resource path="res://src/Level4/Door.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "move"
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 430, 208 ), Vector2( 530, 208 ) ]
+"values": [ Vector2( 430, 208 ), Vector2( 540, 208 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]
