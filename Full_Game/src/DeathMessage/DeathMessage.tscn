@@ -4,7 +4,7 @@
 [ext_resource path="res://src/UserInterface/CoinsCounter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Buttons/MainMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Buttons/Quit.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/art/death screen/the end.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/art/death_screen/the_end.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/art/menu/capboard cut.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/menu/try again popcorn.png" type="Texture" id=7]
 [ext_resource path="res://assets/art/menu/back to main menu.png" type="Texture" id=8]
@@ -12,7 +12,7 @@
 [node name="DeathMessage" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="the end" type="Sprite" parent="."]
+[node name="the_end" type="Sprite" parent="."]
 position = Vector2( 400, 240.5 )
 scale = Vector2( 1.56863, 1.5719 )
 texture = ExtResource( 5 )
@@ -54,12 +54,12 @@ position = Vector2( 618, 354 )
 scale = Vector2( 0.033, 0.033 )
 texture = ExtResource( 6 )
 
-[node name="try again" type="Sprite" parent="."]
+[node name="try_again" type="Sprite" parent="."]
 position = Vector2( 617, 179 )
 scale = Vector2( 0.174769, 0.166933 )
 texture = ExtResource( 7 )
 
-[node name="back to menu" type="Sprite" parent="."]
+[node name="back_to_menu" type="Sprite" parent="."]
 position = Vector2( 623, 274 )
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 8 )
