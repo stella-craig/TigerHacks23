@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/film nior music.mp3-05dc1be0adab1e5aa06d50039d78da85.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/film nior music.mp3"
+dest_files=[ "res://.import/film nior music.mp3-05dc1be0adab1e5aa06d50039d78da85.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
