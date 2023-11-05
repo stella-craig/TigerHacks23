@@ -221,10 +221,10 @@ position = Vector2( 824, 1643 )
 [node name="ParallaxBg2" parent="." instance=ExtResource( 8 )]
 
 [node name="Label" type="Label" parent="."]
-margin_left = -412.0
-margin_top = -213.0
-margin_right = -66.0
-margin_bottom = -21.0
+margin_left = -553.0
+margin_top = 457.0
+margin_right = -207.0
+margin_bottom = 649.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 text = "This is a simple demo on how to make a platformer game with Godot.\"This version uses physics and the 2D physics engine for motion and collision.\"\"The demo also shows the benefits of using the scene system, where coins,\"enemies and the player are edited separatedly and instanced in the stage.\"\"To edit the base tiles for the  tileset, open the tileset_edit.tscn file and follow \"instructions.\""
@@ -239,18 +239,17 @@ autoplay = true
 [node name="Ruby Slippers" parent="Collectibles" instance=ExtResource( 11 )]
 position = Vector2( 1537, 1289 )
 
+[node name="fall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1259, 2029 )
+scale = Vector2( 150, 1 )
+
 [node name="Grayscale" type="ColorRect" parent="."]
-visible = false
 material = SubResource( 14 )
 margin_left = -113152.0
 margin_top = -26718.0
 margin_right = 131385.0
 margin_bottom = 39160.0
 script = ExtResource( 10 )
-
-[node name="fall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1259, 2029 )
-scale = Vector2( 150, 1 )
 
 [node name="Door" type="Node" parent="."]
 
