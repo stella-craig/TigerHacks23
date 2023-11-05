@@ -19,6 +19,7 @@ onready var rc_left = $RaycastLeft
 onready var rc_right = $RaycastRight
 
 
+
 func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
 	var new_anim = anim
@@ -32,6 +33,9 @@ func _integrate_forces(s):
 
 		for i in range(s.get_contact_count()):
 			var cc = s.get_contact_collider_object(i)
+			print(cc)
+			if 'Body' in str(cc):
+				get_tree().change_scene("res://Stage.tscn")
 			var dp = s.get_contact_local_normal(i)
 
 			if cc:
