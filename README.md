@@ -11,9 +11,6 @@ Note: This was a project for the TigerHacks 2023 Hackathon.
 [![Watch our demo!](https://imgur.com/khZlQFY)](https://www.youtube.com/watch?v=Vm-Nc_liT54&ab_channel=StellaCraig)
 
 
-<video src='https://www.youtube.com/watch?v=Vm-Nc_liT54&ab_channel=StellaCraig' width=180/>
-
-
 ## Level 1: Silent Era
 
 The Silent Era was an era of film before cameras could record sound. Our focus is on the 1920s with films like those starring Charlie Chaplin. The level is in black and white and has no audio at all to show these aspects of this time period. The main enemy is a car from the 1920s. Don't get run over!
