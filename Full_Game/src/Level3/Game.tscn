@@ -9,12 +9,14 @@
 pause_mode = 2
 script = ExtResource( 2 )
 
-[node name="Level2" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 104, 537 )
 
-[node name="Player" parent="Level2" instance=ExtResource( 4 )]
-position = Vector2( 90, 546 )
+[node name="Level2" parent="." instance=ExtResource( 3 )]
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
 
 [node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
+margin_top = 2.0
+margin_bottom = 2.0

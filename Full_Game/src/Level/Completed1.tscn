@@ -6,10 +6,10 @@
 [ext_resource path="res://src/Buttons/MainMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Level/Label5.gd" type="Script" id=5]
 [ext_resource path="res://assets/art/menu/capboard cut.png" type="Texture" id=6]
-[ext_resource path="res://assets/art/end_level/fin.jpg" type="Texture" id=7]
+[ext_resource path="res://src/Level/fin.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/art/menu/back to main menu.png" type="Texture" id=8]
-[ext_resource path="res://assets/art/menu/next level.png" type="Texture" id=9]
-[ext_resource path="res://assets/art/menu/grey clapboard.png" type="Texture" id=10]
+[ext_resource path="res://src/Level/next level.png" type="Texture" id=9]
+[ext_resource path="res://src/Level/grey clapboard.png" type="Texture" id=10]
 
 [node name="Completed1" type="CanvasLayer"]
 
@@ -63,15 +63,6 @@ margin_right = 770.0
 margin_bottom = 277.0
 script = ExtResource( 5 )
 
-[node name="MainMenu" parent="." instance=ExtResource( 4 )]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 352.0
-margin_top = 321.0
-margin_right = 455.0
-margin_bottom = 424.0
-
 [node name="Quit" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0 )
@@ -112,5 +103,13 @@ texture = ExtResource( 10 )
 position = Vector2( 150, 384 )
 scale = Vector2( 0.304, 0.304 )
 texture = ExtResource( 9 )
+
+[node name="MainMenu" parent="." instance=ExtResource( 4 )]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 352.0
+margin_top = 323.0
+margin_right = 455.0
+margin_bottom = 429.0
+text = ""
 
 [connection signal="button_down" from="Continue" to="Continue" method="_on_Continue_button_down"]
