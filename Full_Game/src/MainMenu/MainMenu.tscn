@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/MainMenu/StartButton.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/art/menu/Start Game.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/menu/Start Game Shaddow.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/menu/capboard cut.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/menu/Reel_Life1.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/menu/Reel_Life2.png" type="Texture" id=9]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -54,5 +56,16 @@ texture = ExtResource( 5 )
 position = Vector2( 400, 394 )
 scale = Vector2( 0.0422363, 0.0441894 )
 texture = ExtResource( 7 )
+
+[node name="title" type="Sprite" parent="."]
+position = Vector2( 401, 145 )
+scale = Vector2( 0.858124, 0.873134 )
+texture = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 400, 153 )
+scale = Vector2( 0.886728, 0.993711 )
+texture = ExtResource( 8 )
 
 [connection signal="button_down" from="StartButton" to="." method="_on_StartButton_button_down"]
