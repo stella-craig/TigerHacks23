@@ -1,6 +1,6 @@
 # Reel Life
 
-Welcome to Reel Life! You play as a time traveler, but when testing your time machine, everything goes wrong and you are transported in time to the different eras of film.
+Welcome to Reel Life, a Windows video game! You play as a time traveler, but when testing your time machine, everything goes wrong and you are transported in time to the different eras of film.
 Work your way through each stage to reach the modern day once again.
 The enemies are different forms of media, but as a result of our time-traveling disaster, most of the enemies are in the wrong era!
 Throughout each level, you can collect popcorn (instead of coins)! Can you collect them all?
