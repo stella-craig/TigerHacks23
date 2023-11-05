@@ -5,7 +5,7 @@
 [ext_resource path="res://src/Buttons/Quit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Buttons/MainMenu.tscn" type="PackedScene" id=4]
 
-[node name="Completed" type="CanvasLayer"]
+[node name="Completed1" type="CanvasLayer"]
 
 [node name="CoinsCounter" parent="." instance=ExtResource( 1 )]
 margin_left = 390.0
