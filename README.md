@@ -36,4 +36,8 @@ Movement: WASD or arrow keys
 
 Shoot: Space bar or left-click
 
-Interact button: Enter key or space bar
+Interact button for doors: Enter key or space bar
+
+## How We Made It
+
+We built this using Godot Game Engine. This was the first time any of us had made a game, let alone this specific engine or scripting language so it had a bit of a learning curve to it. Many of the assets were handmade, and if not, they are credited in the credits.txt file. 
