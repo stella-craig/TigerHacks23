@@ -17,7 +17,7 @@ func _on_StartButton_button_down():
 	# warning-ignore:unsafe_property_access
 	CoinsCounter.third_level = false
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://src/Level4/Game.tscn")
+	get_tree().change_scene("res://src/Main/Game.tscn")
 
 
 func _on_QuitButton_button_down():
