@@ -8,6 +8,9 @@ Be careful though, the game is permadeath! All levels have been tested and are p
 
 Note: This was a project for the TigerHacks 2023 Hackathon.
 
+[![Watch the video](https://i.stack.imgur.com/Vp2cE.png)]([https://youtu.be/vt5fpE0bzSY](https://www.youtube.com/watch?v=XnFHxiS4QUw&ab_channel=MayaBowman))
+
+
 ## Level 1: Silent Era
 
 The Silent Era was an era of film before cameras could record sound. Our focus is on the 1920s with films like those starring Charlie Chaplin. The level is in black and white and has no audio at all to show these aspects of this time period. The main enemy is a car from the 1920s. Don't get run over!
@@ -35,6 +38,7 @@ Download the Reel Life .exe and .pck files. Open the exe file and you should be 
 Movement: WASD or arrow keys
 
 Shoot: Space bar or left-click
+
 
 Interact button for doors: Enter key or space bar
 
