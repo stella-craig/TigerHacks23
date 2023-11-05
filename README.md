@@ -8,7 +8,7 @@ Be careful though, the game is permadeath! All levels have been tested and are p
 
 Note: This was a project for the TigerHacks 2023 Hackathon.
 
-[![Watch the video](https://imgur.com/khZlQFY)](https://www.youtube.com/watch?v=Vm-Nc_liT54&ab_channel=StellaCraig)
+[![Watch our demo!](https://imgur.com/khZlQFY)](https://www.youtube.com/watch?v=Vm-Nc_liT54&ab_channel=StellaCraig)
 
 
 ## Level 1: Silent Era
